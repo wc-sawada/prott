@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>modoso つかったら戻そう</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="icon" href="/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/yamapan/css/reset.css" media="all">
+<link rel="stylesheet" href="/yamapan/css/fpsp/test.css" media="all">
+<!--[if lt IE 9]><script src="/js/html5shiv-printshiv.js"></script><![endif]-->
+<script src="/yamapan/js/fpsp/jquery.js"></script>
+<script src="/yamapan/js/fpsp/fpsp.js"></script>
+</head>
+<body>
+<div id="wrapper">
+<!-- <label for="menu">menu</label>
+<input type="checkbox" id="menu">
+<nav>
+<h2>絞り込み表示メニュー</h2>
+<ul>
+<li class="all"><a href="javascript:changeCssClass('all')">すべての端末表示する</a></li>
+</ul>
+<h2>キャリア別表示</h2>
+<ul>
+<li class="docomo"><a href="javascript:changeCssClass('docomo')">docomo</a></li>
+<li class="au"><a href="javascript:changeCssClass('au')">au</a></li>
+<li class="softbank"><a href="javascript:changeCssClass('softbank')">softbank</a></li>
+<li class="other"><a href="javascript:changeCssClass('other')">other</a></li>
+</ul>
+<h2>OS別表示</h2>
+<ul>
+<li class="iOS3"><a href="javascript:changeCssClass('iOS3')">iOS 3.1.3</a></li>
+<li class="iOS5"><a href="javascript:changeCssClass('iOS5')">iOS 5.1.1</a></li>
+<li class="iOS7"><a href="javascript:changeCssClass('iOS7')">iOS 7.0.6</a></li>
+<li class="iOS8"><a href="javascript:changeCssClass('iOS8')">iOS 8</a></li>
+<li class="ad21"><a href="javascript:changeCssClass('ad21')">Android 2.1</a></li>
+<li class="ad22"><a href="javascript:changeCssClass('ad22')">Android 2.2</a></li>
+<li class="ad23"><a href="javascript:changeCssClass('ad23')">Android 2.3.3～2.3.7</a></li>
+<li class="ad32"><a href="javascript:changeCssClass('ad32')">Android 3.2</a></li>
+<li class="ad40"><a href="javascript:changeCssClass('ad40')">Android 4.0.3～4.0.4</a></li>
+<li class="ad41"><a href="javascript:changeCssClass('ad41')">Android 4.1.X</a></li>
+<li class="ad42"><a href="javascript:changeCssClass('ad42')">Android 4.2.X</a></li>
+<li class="ad43"><a href="javascript:changeCssClass('ad43')">Android 4.3</a></li>
+<li class="ad44"><a href="javascript:changeCssClass('ad44')">Android 4.4</a></li>
+<li class="fp"><a href="javascript:changeCssClass('fp')">feature phone</a></li>
+</ul>
+</nav>
+-->
+
+<div id="menuWrapper">
+<div id="contentsWrapper">
+<header><h1><a href="/yamapan/fpsp/">modoso</a></h1><span>tsukattara modoso</span></header>
+<main>
+<p class="lead">
+利用(返却）・探している端末をクリックしてください。
+</p>
+<div id="mbList">
+
+<sstag type="cont_disp">
+	table_id    = 'fpsp'
+	order_dir   = 'desc'
+	limit       = '100'
+	composite_key = 'carrier = softbank'
+	html        = '<a href="update_pre.html?in=%{cont.item.item_num.value}&rc=%{rec_id}" target="fpsp_user" onClick="disp(\'update_pre.html?in=%{cont.item.item_num.value}&rc=%{rec_id}\')" class="all active %{cont.item.carrier.value} %{cont.item.os_ver.value}">
+<sstag type="disp_control">
+	base_item   = "%{cont.item.name.disp}"
+	exists_html = "<div class=\"rent\"></div>"
+</sstag>
+<sstag type="disp_control">
+	base_item   = "%{cont.item.sagasitemasu.disp}"
+	exists_html = "<div class=\"sagasiteruyo\"></div>"
+</sstag>
+<div class="%{cont.item.carrier.value}">
+<h2>%{cont.item.carrier.value}</h2>
+<div class="photo">%{cont.item.photo.disp}</div>
+<strong>%{cont.item.model.disp}</strong>
+<em>%{cont.item.os_ver.disp}</em>
+<ul>
+<li class="%{cont.item.phone_number.value}">%{cont.item.phone_number.value}</li>
+<li class="%{cont.item.wfIcon.value}"><img src="/yamapan/images/fpsp/wf_icon.png"></li>
+</ul>
+<sstag type="disp_control">
+	base_item   = "%{cont.item.name.disp}"
+	exists_html = "<p><span>%{cont.item.rent.disp}<span class=\"name\">%{cont.item.name.disp}</span><span>%{cont.item.time.disp}</span></span></p>"
+</sstag>
+<sstag type="disp_control">
+	base_item   = "%{cont.item.sagasitemasu.disp}"
+	exists_html = "<p class=\"sagasitemasu\"><span>探してます<span class=\"name\">%{cont.item.sagasitemasu.disp}</span><span>%{cont.item.time.disp}</span></span></p>"
+</sstag>
+</div>
+</a>'
+</sstag>
+
+<sstag type="cont_disp">
+	table_id    = 'fpsp'
+	order_dir   = 'desc'
+	limit       = '100'
+	composite_key = 'carrier = docomo'
+	html        = '<a href="update_pre.html?in=%{cont.item.item_num.value}&rc=%{rec_id}" target="fpsp_user" onClick="disp(\'update_pre.html?in=%{cont.item.item_num.value}&rc=%{rec_id}\')" class="all active %{cont.item.carrier.value} %{cont.item.os_ver.value}">
+<sstag type="disp_control">
+	base_item   = "%{cont.item.name.disp}"
+	exists_html = "<div class=\"rent\"></div>"
+</sstag>
+<sstag type="disp_control">
+	base_item   = "%{cont.item.sagasitemasu.disp}"
+	exists_html = "<div class=\"sagasiteruyo\"></div>"
+</sstag>
+<div class="%{cont.item.carrier.value}">
+<h2>%{cont.item.carrier.value}</h2>
+<div class="photo">%{cont.item.photo.disp}</div>
+<strong>%{cont.item.model.disp}</strong>
+<em>%{cont.item.os_ver.disp}</em>
+<ul>
+<li class="%{cont.item.phone_number.value}">%{cont.item.phone_number.value}</li>
+<li class="%{cont.item.wfIcon.value}"><img src="/yamapan/images/fpsp/wf_icon.png"></li>
+</ul>
+<sstag type="disp_control">
+	base_item   = "%{cont.item.name.disp}"
+	exists_html = "<p><span>%{cont.item.rent.disp}<span class=\"name\">%{cont.item.name.disp}</span><span>%{cont.item.time.disp}</span></span></p>"
+</sstag>
+<sstag type="disp_control">
+	base_item   = "%{cont.item.sagasitemasu.disp}"
+	exists_html = "<p class=\"sagasitemasu\"><span>探してます<span class=\"name\">%{cont.item.sagasitemasu.disp}</span><span>%{cont.item.time.disp}</span></span></p>"
+</sstag>
+</div>
+</a>'
+</sstag>
+
+<sstag type="cont_disp">
+	table_id    = 'fpsp'
+	order_dir   = 'desc'
+	limit       = '100'
+	composite_key = 'carrier = au'
+	html        = '<a href="update_pre.html?in=%{cont.item.item_num.value}&rc=%{rec_id}" target="fpsp_user" onClick="disp(\'update_pre.html?in=%{cont.item.item_num.value}&rc=%{rec_id}\')" class="all active %{cont.item.carrier.value} %{cont.item.os_ver.value}">
+<sstag type="disp_control">
+	base_item   = "%{cont.item.name.disp}"
+	exists_html = "<div class=\"rent\"></div>"
+</sstag>
+<sstag type="disp_control">
+	base_item   = "%{cont.item.sagasitemasu.disp}"
+	exists_html = "<div class=\"sagasiteruyo\"></div>"
+</sstag>
+<div class="%{cont.item.carrier.value}">
+<h2>%{cont.item.carrier.value}</h2>
+<div class="photo">%{cont.item.photo.disp}</div>
+<strong>%{cont.item.model.disp}</strong>
+<em>%{cont.item.os_ver.disp}</em>
+<ul>
+<li class="%{cont.item.phone_number.value}">%{cont.item.phone_number.value}</li>
+<li class="%{cont.item.wfIcon.value}"><img src="/yamapan/images/fpsp/wf_icon.png"></li>
+</ul>
+<sstag type="disp_control">
+	base_item   = "%{cont.item.name.disp}"
+	exists_html = "<p><span>%{cont.item.rent.disp}<span class=\"name\">%{cont.item.name.disp}</span><span>%{cont.item.time.disp}</span></span></p>"
+</sstag>
+<sstag type="disp_control">
+	base_item   = "%{cont.item.sagasitemasu.disp}"
+	exists_html = "<p class=\"sagasitemasu\"><span>探してます<span class=\"name\">%{cont.item.sagasitemasu.disp}</span><span>%{cont.item.time.disp}</span></span></p>"
+</sstag>
+</div>
+</a>'
+</sstag>
+
+<sstag type="cont_disp">
+	table_id    = 'fpsp'
+	order_dir   = 'desc'
+	limit       = '100'
+	composite_key = 'carrier = other'
+	html        = '<a href="update_pre.html?in=%{cont.item.item_num.value}&rc=%{rec_id}" target="fpsp_user" onClick="disp(\'update_pre.html?in=%{cont.item.item_num.value}&rc=%{rec_id}\')" class="all active %{cont.item.carrier.value} %{cont.item.os_ver.value}">
+<sstag type="disp_control">
+	base_item   = "%{cont.item.name.disp}"
+	exists_html = "<div class=\"rent\"></div>"
+</sstag>
+<sstag type="disp_control">
+	base_item   = "%{cont.item.sagasitemasu.disp}"
+	exists_html = "<div class=\"sagasiteruyo\"></div>"
+</sstag>
+<div class="%{cont.item.carrier.value}">
+<h2>%{cont.item.carrier.value}</h2>
+<div class="photo">%{cont.item.photo.disp}</div>
+<strong>%{cont.item.model.disp}</strong>
+<em>%{cont.item.os_ver.disp}</em>
+<ul>
+<li class="%{cont.item.phone_number.value}">%{cont.item.phone_number.value}</li>
+<li class="%{cont.item.wfIcon.value}"><img src="/yamapan/images/fpsp/wf_icon.png"></li>
+</ul>
+<sstag type="disp_control">
+	base_item   = "%{cont.item.name.disp}"
+	exists_html = "<p><span>%{cont.item.rent.disp}<span class=\"name\">%{cont.item.name.disp}</span><span>%{cont.item.time.disp}</span></span></p>"
+</sstag>
+<sstag type="disp_control">
+	base_item   = "%{cont.item.sagasitemasu.disp}"
+	exists_html = "<p class=\"sagasitemasu\"><span>探してます<span class=\"name\">%{cont.item.sagasitemasu.disp}</span><span>%{cont.item.time.disp}</span></span></p>"
+</sstag>
+</div>
+</a>'
+</sstag>
+
+<!-- #mbList --></div>
+</main>
+<footer>
+<a href="mailto:yamazaki@webcrew.co.jp">ご意見・ご質問</a><br>
+<small>Copyright &copy; <a href="http://www.webcrew.co.jp">WebCrew Inc.</a> All Rights Reserved.</small>
+</footer>
+</div>
+</div>
+</div>
+</body>
+</html>

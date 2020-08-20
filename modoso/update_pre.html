@@ -1,0 +1,18 @@
+<sstag type="start_session">
+id="fpsp_user"
+</sstag>
+
+<sstag type="form_item_conv">
+  form_id = "fpsp_user"
+  logic   = "ClearFormLogic"
+</sstag>
+
+<sstag type="record_id">
+  table_id = "fpsp"
+  ignore_pubflag = 1
+  record_id = $$get.rc$$
+  record_key = 'item_num=$$get.rc$$'
+  form_id = "fpsp_user"
+  found_url = 'update.html?rc=$$get.rc$$'
+</sstag>
+

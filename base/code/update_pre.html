@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Prottつかってます</title>
+  <link rel="stylesheet" type="text/css" href="../code/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="../code/css/prottcall.css">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP|Roboto" rel="stylesheet">
+  <script src="../code/js/prottcall.js"></script>
+</head>
+<body>
+
+<header>
+    <h1>Prottつかってます！</h1>
+</header>
+
+<div class="contentsWrapper">
+<div class="settingWrapper">
+
+  <div class="card idle">
+  <div class="status">
+    <h2>ライフソリューション div.</h2>
+    <form action="" method="post">
+    <div class="nameWrapper">
+      <input type="text" id="name" maxlength='10' onfocus="if(this.value){namelabel.style.display='block';}" onblur="chktext(this)">
+      <label for="name" id="namelabel">名前</label>
+    </div>
+
+    <div class="usetimeWrapper">
+      <label for="usetime">使用予定時間</label>
+      <div class="item_usetime">
+
+      <input type="radio" name="usetime" value="10min" id="10min" checked="checked">
+      <label for="10min">10分</label>
+
+      <input type="radio" name="usetime" value="30min" id="30min">
+      <label for="30min">30分</label>
+
+      <input type="radio" name="usetime" value="1hour" id="1hour">
+      <label for="1hour">1時間</label>
+
+      <input type="radio" name="usetime" value="halfday" id="halfday">
+      <label for="halfday">半日</label>
+
+      <input type="radio" name="usetime" value="oneday" id="oneday">
+      <label for="oneday">終日</label>
+
+      </div>
+    </div>
+      <div class="btn btn_use"><button type="submit">使う</button></div>
+    </form>
+  </div>
+  </div>
+
+  <div class="card  active">
+    <div class="status">
+    <h2>ライフソリューション div.</h2>
+    <h3>上田　佑香 が<br>
+    つかってます！</h3>
+
+    <div class="btn btn_logout">
+        <button type="submit">
+        <span class="btn_logout_text">ログアウトを宣言する</span></button>
+    </div>
+      <p class="subtext">※他の人が使っているときは押さないでね！</p>
+  </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>

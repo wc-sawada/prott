@@ -1,0 +1,173 @@
+<sstag type="start_session">
+id="fpsp_user"
+</sstag>
+
+<sstag type="record_id">
+  table_id   = "fpsp"
+  record_id  = "$$get.rc$$"
+</sstag>
+
+<sstag type="form_validation">
+  form_id  = fpsp_user
+  redirect_ok = 'update_start.html'
+  screening   = no
+</sstag>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>modoso つかったら戻そう</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="icon" href="/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/yamapan/css/reset.css" media="all">
+<link rel="stylesheet" href="/yamapan/css/fpsp/edit.css" media="all">
+<!--[if lt IE 9]><script src="/js/html5shiv-printshiv.js"></script><![endif]-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript">
+
+function submitForm(){
+
+	var requester = $('input[name="sagasitemasu"]').val();
+	var terminal = $('#detail strong').text();
+	var os = $('#detail em').text();
+	var param = {
+	  requester:requester,
+	  terminal:terminal,
+	  os:os
+	 }
+	if(requester != ""){
+	$.post('/yamapan/fpsp/messageSender.html',param,
+	function(){
+	console.log('log_send');
+	document.form.submit();
+	});
+	} else {
+	document.form.submit();
+	}
+}
+</script>
+
+
+<script>
+$(window).load(function () {
+	if($('#rent_1').is(':checked')) {
+		$('.formBox tr:nth-child(3)').css('display','table-row');
+	} else {
+		$('.formBox tr:nth-child(3)').css('display','none');
+	}
+});
+
+$(function(){
+    $('input').change(function(){
+		if($('#rent_1').is(':checked')) {
+		$('.formBox tr:nth-child(3)').css('display','table-row');
+	} else {
+		$('.formBox tr:nth-child(3)').css('display','none');
+		}
+    });
+});
+</script>
+<style>
+.formBox tr:nth-child(3) {
+	display:none;
+}
+</style>
+</head>
+<body>
+<div id="wrapper">
+
+
+<div id="menuWrapper">
+<div id="contentsWrapper">
+<header><h1>modoso</h1><span>tsukattara modoso</span></header>
+<main>
+
+<div id="detail">
+<div class="photo">$$cont.fpsp.photo.disp$$</div>
+
+<div class="$$cont.fpsp.carrier.value$$">
+<h2>$$cont.fpsp.carrier.disp$$</h2>
+<strong>$$cont.fpsp.model.disp$$</strong>
+<em>$$cont.fpsp.os_ver.disp$$</em>
+<em>$$cont.fpsp.phone_number.value$$</em>
+<p>$$cont.fpsp.mail_address.disp$$</p>
+
+<span class="wifi $$cont.fpsp.wfIcon.value$$"><img src="/yamapan/images/fpsp/wf_icon.png" alt=""></span>
+
+</div>
+</div>
+
+<p class="lead">利用（返却）したい場合は下記を入力してください。</p>
+※返却時は利用者名の欄を空欄にしてください。
+
+<form name="form" action="update.html" method="post">
+<div class="formBox"><table>
+<sstag type="form_disp">
+  form_id  = 'fpsp_user'
+  group_id = 'group_01'
+	html = '<tr>
+<th>%{form.item.title}</th>
+<td>
+%{form.item.html}%{form.item.caution.2}
+%{form.item.caution.3}
+%{error1}%{form.item.error}%{error2}
+</td>
+</tr>'
+	error1   = '<p class="error">※'
+	error2   = '</p>'
+</sstag>
+</table>
+</div>
+<p class="lead">端末を探している場合はこちらに記載しましょう。</p>
+※端末が見つかった場合は空欄にしてください。
+<div class="formBox">
+<table>
+<sstag type="form_disp">
+  form_id  = 'fpsp_user'
+  group_id = 'group_03'
+	html = '<tr>
+<th>%{form.item.title}</th>
+<td>
+%{form.item.html}%{form.item.caution.2}
+%{form.item.caution.3}
+%{error1}%{form.item.error}%{error2}
+</td>
+</tr>'
+	error1   = '<p class="error">※'
+	error2   = '</p>'
+</sstag>
+</table>
+<input type="hidden" name="time" id="time" value="">
+<input type="button" value="更新" name="submitButton" alt="更新" class="buttonNext" onclick="submitForm();">
+<!-- .formBox --></div>
+
+</form>
+
+
+</main>
+
+
+
+<footer><small>Copyright &copy; <a href="http://www.webcrew.co.jp">WebCrew Inc.</a> All Rights Reserved.</small></footer>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+var get_current_timestamp = function() {
+    var d = new Date();
+    var month  = d.getMonth() + 1;
+    var day    = d.getDate();
+    var hour   = d.getHours();
+    var minute = d.getMinutes();
+    if (month < 10) {month = "0" + month;}
+    if (day < 10) {day = "0" + day;}
+    if (hour < 10) {hour = "0" + hour;}
+    if (minute < 10) {minute = "0" + minute;}
+    return month + "/" + day + " " + hour + ":" + minute;
+}
+document.getElementById('time').value = get_current_timestamp();
+</script>
+</body>
+</html>
